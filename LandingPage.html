@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK Marhas Margahayu</title>
+    <link rel="icon" type="image/x-icon" href="asset/remove logo marhas.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    .btn-hover  {
+        transition: all 0.3s ease;
+    }
+    .btn-hover:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .karya-img {
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    .karya-img:hover {
+        transform: scale(1.05);
+    }
+    .karya-icon-circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
+    }
+    .karya-icon-circle:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    /* Product card hover */
+    .product-card {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    .product-card img {
+        transition: transform 0.3s ease;
+    }
+    .product-card:hover img {
+        transform: scale(1.05);
+    }
+    /* Sidebar produk unggulan */
+    .produk-sidebar {
+        border-radius: 20px;
+        padding: 40px 30px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+        overflow: hidden;
+    }
+    .produk-sidebar::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.1) 100%);
+        border-radius: 20px;
+        z-index: 0;
+        opacity: 1;
+        transition: opacity 0.4s ease;
+    }
+    .produk-sidebar:hover::after {
+        opacity: 0;
+    }
+    .produk-sidebar > * {
+        position: relative;
+        z-index: 1;
+    }
+    /* Section hover effects */
+    .hover-section {
+        transition: background-color 0.4s ease;
+    }
+    .hover-lift {
+        transition: all 0.3s ease;
+    }
+    .hover-lift:hover {
+        transform: translateY(-3px);
+    }
+    /* Footer link hover */
+    footer a.text-muted:hover {
+        color: #fff !important;
+        transition: color 0.3s ease;
+    }
+    /* Foto hover */
+    .foto-hover {
+        transition: all 0.3s ease;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+    .foto-hover:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        background-image: url('asset/main head.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(20, 50, 40, 0.85) 0%, rgba(30, 60, 50, 0.7) 50%, rgba(0, 0, 0, 0.4) 100%);
+        z-index: 1;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        padding: 6px 18px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 24px;
+    }
+    .hero-badge .badge-dot {
+        width: 10px;
+        height: 10px;
+        background: #325ab1;
+        border-radius: 50%;
+        display: inline-block;
+        animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
+    }
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+    .hero-title .highlight {
+        color: #3d6baf;
+        font-style: italic;
+    }
+    .hero-desc {
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 550px;
+        line-height: 1.7;
+        margin-bottom: 32px;
+    }
+    .btn-hero-primary {
+        background: #325ab1;
+        color: #fff;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+    .btn-hero-primary:hover {
+        background: #4067b4;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgb(130, 159, 204);
+    }
+    .btn-hero-outline {
+        background: transparent;
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .btn-hero-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgb(130, 159, 204); 
+    }
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.2rem;
+        }
+        .hero-section {
+            min-height: 70vh;
+        }
+    }
+    .h3produkUnggulan {
+        color: #fff;
+    }
+    .pProdukUnggulan {
+        color: #fff;
+    }
+    .btnProdukUnggulan {
+        color: #fff;
+    }
+
+    .card-carousel {
+        position: relative;
+        width: 100%;
+        max-width: 180px;
+        height: 250px;
+    }
+
+    .card-item {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.6s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        will-change: transform;
+        filter: blur(2px);
+    }
+
+    .card-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @media (min-width: 992px) {
+        .card-carousel {
+            max-width: 300px;
+            height: 400px;
+        }
+    }
+
+    /* posisi */
+    .card-item.active {
+        transform: translateX(0) scale(1);
+        z-index: 3;
+        filter: blur(0);
+    }
+
+    .c1 {
+        transform: translateX(-120px) scale(0.9);
+        z-index: 1;
+        transform-origin: left;
+    }
+
+    .c2 {
+        transform: translateX(-60px)  scale(0.95);
+        z-index: 2;
+        transform-origin: left;
+    }
+
+    .c4 {
+        transform: translateX(60px) scale(0.95);
+        z-index: 2;
+        transform-origin: right;
+    }
+
+    .c5 {
+        transform: translateX(120px) scale(0.9);
+        z-index: 1;
+        transform-origin: right;
+    }
+</style>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="asset/remove logo marhas.png" alt="logo" width="50" class="me-2">
+                <strong>SMK Marhas Margahayu</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produk">Program</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                </ul>
+                <a href="form.html" class="btn btn-warning ms-lg-3 px-4 btn-hover">Daftar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="row">
+                <div class="col-lg-6 py-3">
+                    <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+                        <span class="badge-dot"></span>
+                        TAHUN AJARAN BARU 2026/2027
+                    </div>
+                    <h1 class="hero-title" data-aos="fade-right" data-aos-delay="200">
+                        Langkah Pasti<br>
+                        <span class="highlight">Menuju Prestasi.</span>
+                    </h1>
+                    <p class="hero-desc" data-aos="fade-right" data-aos-delay="300">
+                        SMK Marhas berkomitmen membentuk generasi cerdas berkarakter, membekali mereka dengan pengetahuan vokasi dan keterampilan praktis untuk menyongsong masa depan.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="400">
+                        <a href="form.html" class="btn-hero-primary">
+                            Pendaftaran PPDB <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                        <a href="https://drive.google.com/file/d/1qoXzqm9_GFrMobv1l_xYpDWgWT6Yn6jL/view" class="btn-hero-outline">
+                            Lihat Program Keahlian
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Carousel -->
+                <div class="col-lg-6 d-flex justify-content-center align-items-center py-3 my-3">
+                    <div class="card-carousel" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="card-item c1">
+                            <img src="asset/carsel1.jpg" alt="">
+                        </div>
+
+                        <div class="card-item c2">
+                            <img src="asset/carsel2.jpg" alt="">
+                        </div>
+
+                        <div class="card-item c3 active">
+                            <img src="asset/carsel3.jpg" alt="">
+                        </div>
+
+                        <div class="card-item c4">
+                            <img src="asset/carsel4.jpg" alt="">
+                        </div>
+
+                        <div class="card-item c5">
+                            <img src="asset/carsel5.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mitra Kerja Sama Section -->
+    <section class="py-4 bg-light hover-section" id="mitra">
+        <div class="container">
+            <div class="d-flex justify-content-center align-items-center gap-5 flex-wrap">
+                <img src="asset/telkom.png" alt="Telkom" class="hover-lift" style="height: 70px; object-fit: contain;" data-aos="fade-right">
+                <img src="asset/axioo.png" alt="Axioo" class="hover-lift" style="height: 40px; object-fit: contain;" data-aos="fade-left">
+            </div>
+        </div>
+    </section>
+
+    <!-- Karya Siswa Section -->
+    <section class="py-5 hover-section" id="karya">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3" data-aos="fade-down">Karya Siswa</h2>
+            </div>
+
+            <div class="row g-3 justify-content-center">
+                <div class="col-lg-2 col-md-4 col-4 text-center" data-aos="fade-right" data-aos-delay="100">
+                    <div class="karya-icon-circle" style="background: #fce4ec;">
+                        <i class="fa-brands fa-html5 fa-2x" style="color: #e44d26;"></i>
+                    </div>
+                    <p class="mt-2 fw-semibold small">HTML 5</p>
+                </div>
+                <div class="col-lg-2 col-md-4 col-4 text-center" data-aos="fade-right">
+                    <div class="karya-icon-circle" style="background: #e8eaf6;">
+                        <i class="fa-brands fa-js fa-2x" style="color: #f7df1e;"></i>
+                    </div>
+                    <p class="mt-2 fw-semibold small">JavaScript</p>
+                </div>
+                <div class="col-lg-2 col-md-4 col-4 text-center" data-aos="zoom-in">
+                    <div class="karya-icon-circle" style="background: #e0f2f1;">
+                        <i class="fa-brands fa-css3-alt fa-2x" style="color: #264de4;"></i>
+                    </div>
+                    <p class="mt-2 fw-semibold small">CSS</p>
+                </div>
+                <div class="col-lg-2 col-md-4 col-4 text-center" data-aos="zoom-in">
+                    <div class="karya-icon-circle" style="background: #e0f7fa;">
+                        <i class="fa-brands fa-figma fa-2x" style="color: #a259ff;"></i>
+                    </div>
+                    <p class="mt-2 fw-semibold small">Figma</p>
+                </div>
+                <div class="col-lg-2 col-md-4 col-4 text-center" data-aos="fade-left">
+                    <div class="karya-icon-circle" style="background: #fce4ec;">
+                        <i class="fa-brands fa-laravel fa-2x" style="color: #ff2d20;"></i>
+                    </div>
+                    <p class="mt-2 fw-semibold small">Laravel</p>
+                </div>
+                <div class="col-lg-2 col-md-4 col-4 text-center" data-aos="fade-left" data-aos-delay="100">
+                    <div class="karya-icon-circle" style="background: #fff3e0;">
+                        <i class="fa-solid fa-microchip fa-2x" style="color: #ff6f00;"></i>
+                    </div>
+                    <p class="mt-2 fw-semibold small">IOT</p>
+                </div>
+            </div>
+
+            <!-- Integrasi Produk -->
+            <br><br>
+            <div class="row g-4 align-items-stretch ">
+                <!-- Sidebar Produk Unggulan --> 
+                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="produk-sidebar" style="background: url('asset/Edunomics mrhs.png') center/cover no-repeat;">  
+                        <h3 class="fw-bold mb-3 text-white" id="h3produkUnggulan" data-aos="fade-right" data-aos-delay="50">Produk Unggulan</h3>
+                        <p class="mb-4 text-white" id="pProdukUnggulan" data-aos="fade-right" data-aos-delay="100">Kami menyiapkan produk unggulan yang terbaik untuk anda</p>
+                        <a href="allview.html" class="btn btn-outline-light btn-hover px-4 py-2" style="border-radius: 8px; width: fit-content;" id="btnProdukUnggulan" data-aos="fade-right" data-aos-delay="150">View All Items</a>
+                    </div>
+                </div>
+
+                <!-- Product  -->
+                <div class="col-lg-8">
+                    <div class="row g-3">
+                        <!-- Product 1 -->
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card border-0 shadow-sm product-card">
+                                <img src="asset/maukemana 1.png" class="card-img-top" alt="Product 1" style="height: 180px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h6 class="card-title fw-bold">Cara Membuat Desain UI Card yang Ramah Pengguna</h6>
+                                    <small class="text-muted">By Alipp</small>
+                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <a href="karya1.html" class="btn btn-primary btn-sm btn-hover">Preview</a>
+                                        <span class="text-success fw-bold">Gratis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card border-0 shadow-sm product-card">
+                                <img src="asset/bukukita.png" class="card-img-top" alt="Product 2" style="height: 180px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h6 class="card-title fw-bold">Buku Kita: Lebih dari Sekadar Membaca, Kita Menghargai Setiap Karya</h6>
+                                    <small class="text-muted">By Alipp</small>
+                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <a href="karya2.html" class="btn btn-primary btn-sm btn-hover">Preview</a>
+                                        <span class="text-success fw-bold">Gratis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card border-0 shadow-sm product-card">
+                                <img src="asset/warbas.png" class="card-img-top" alt="Product 3" style="height: 180px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h6 class="card-title fw-bold">Alifppy: Jagoan Kelola Warung, Bikin Bisnis Seblak & Bakso Makin Untung!</h6>
+                                    <small class="text-muted">By Alipp</small>
+                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <a href="karya4.html" class="btn btn-primary btn-sm btn-hover">Preview</a>
+                                        <span class="text-success fw-bold">Gratis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                            <div class="card border-0 shadow-sm product-card">
+                                <img src="asset/seragam.png" class="card-img-top" alt="Product 4" style="height: 180px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h6 class="card-title fw-bold">Mulai Hari Seninmu dengan Rapi, Sambut Prestasi dengan Atribut Komplet!</h6>
+                                    <small class="text-muted">By Alipp</small>
+                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <a href="karya3.html" class="btn btn-primary btn-sm btn-hover">Preview</a>
+                                        <span class="text-success fw-bold">Gratis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deskripsi Perkembangan Section -->
+    <section class="py-5 hover-section" id="tentang">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3" data-aos="fade-down">Pengembangan Perangkat Lunak dan Gim</h2>
+            </div>
+
+            <div class="row g-5 align-items-center ">
+                <div class="col-lg-6" mb-4>
+                    <div class="row g-3">
+                        <div class="col-6" data-aos="fade-down-right" data-aos-delay="100">
+                            <div class="foto-hover"><img src="asset/foto1.jpg" class="img-fluid rounded shadow mt-2" alt="Activity 1" style="height: 300px; object-fit: cover; width: 100%;"></div>
+                        </div>
+                        <div class="col-6" data-aos="fade-up-right" data-aos-delay="100">
+                            <div class="foto-hover"><img src="asset/foto2.jpg" class="img-fluid rounded shadow mt-2" alt="Activity 2" style="height: 300px; object-fit: cover; width: 100%;"></div>
+                        </div>
+                        <div class="col-6" data-aos="fade-down-left" data-aos-delay="100">
+                            <div class="foto-hover"><img src="asset/foto3.jpg" class="img-fluid rounded shadow mt-2" alt="Activity 3" style="height: 300px; object-fit: cover; width: 100%;"></div>
+                        </div>
+                        <div class="col-6" data-aos="fade-up-left" data-aos-delay="100">
+                            <div class="foto-hover"><img src="asset/foto4.jpg" class="img-fluid rounded shadow mt-2" alt="Activity 4" style="height: 300px; object-fit: cover; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-4" data-aos="fade-left">Mengapa Memilih SMK Marhas?</h3>
+                    <p class="mb-3" data-aos="fade-left" data-aos-delay="200">
+                        Jurusan Teknik Komputer dan Informatika membekali siswa/i dengan pengetahuan dan keterampilan di bidang teknologi informasi dan komunikasi.
+                        Seperti: merakit komputer, mengoperasikan komputer, membuat program aplikasi dan menguasai bahasa pemrograman, membuat website, dan berwirausaha di semua bidang teknologi informasi dan komunikasi.
+                    </p>
+                    <p class="mb-4" data-aos="fade-left" data-aos-delay="100">
+                        Dengan kurikulum yang disesuaikan dengan kebutuhan industri, fasilitas lengkap, dan guru berpengalaman, siswa kami siap bersaing di dunia kerja nasional bahkan global.
+                    </p>
+
+                    <ul class="list-unstyled">
+                        <li class="mb-3" data-aos="fade-left">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>Kurikulum Terstruktur</strong> - Disesuaikan dengan standar industri
+                        </li>
+                        <li class="mb-3" data-aos="fade-left">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>Fasilitas Modern</strong> - Lab komputer, Lab Bahasa, dan Lab desain
+                        </li>
+                        <li class="mb-3" data-aos="fade-left">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>Guru Bersertifikat</strong> - Profesional berpengalaman
+                        </li>
+                        <li class="mb-3" data-aos="fade-left">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            <strong>Beasiswa Tersedia</strong> - Program bantuan untuk siswa berprestasi
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="https://wa.me/628112120040" class="btn btn-primary btn-lg btn-hover mt-4" data-aos="fade-up">Tanya Tentang SMK Marhas?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lokasi Section -->
+    <section class="py-5 bg-light hover-section" id="lokasi">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3" data-aos="fade-down">Lokasi Kami</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <div data-aos="zoom-in">
+                                <h5 class="fw-bold mb-2 text-center">📍 Alamat</h5>
+                                <p class="text-muted text-center">Jl. Terusan Kopo No.385/299, Margahayu Sel, Bandung, Jawa Barat 40151</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="ratio ratio-16x9 mb-4" data-aos="fade-up">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d3960.282681822713!2d107.5704834!3d-6.9759367!3m2!1i1024!2i768!4f13.1!2m1!1ssmk%20marhas!5e0!3m2!1sid!2sid!4v1780619310156!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-5" id="kontak">
+        <div class="container">
+            <div class="row g-5 mb-4">
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3">SMK Marhas</h5>
+                    <p class="text-muted">Sekolah Menengah Kejuruan Berbasis Teknologi terbaik di Korea. <br> <strong>Ayo Gabung Sekarang!!</strong></p>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3">Menu</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#" class="text-muted text-decoration-none">Beranda</a></li>
+                        <li><a href="#tentang" class="text-muted text-decoration-none">Tentang</a></li>
+                        <li><a href="#produk" class="text-muted text-decoration-none">Program</a></li>
+                        <li><a href="#lokasi" class="text-muted text-decoration-none">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <h5 class="fw-bold mb-3">Program</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#" class="text-muted text-decoration-none">PPLG</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">TPM</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <h5 class="fw-bold mb-3">Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="http://shopee.co.id/marhasshop" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <img src="asset/shopee-removebg.png" alt="Shopee" style="width: 20px; height: 20px; object-fit: contain;">
+                        </a>
+                        <a href="https://www.tiktok.com/@marhasupdate" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.instagram.com/marhasupdate" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://m.youtube.com/watch?v=HXTucNSpY1Q&feature=youtu.be" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="bg-secondary">
+
+            <div class="text-center text-muted">
+                <p class="mb-0">&copy; 2026 SMK Marhas. All Rights Reserved. | Designed with <span class="text-danger">❤</span> by Alipyy</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const cards = document.querySelectorAll('.card-item');
+        let index = 2;
+
+        function update() {
+            cards.forEach(card => card.classList.remove('active'));
+            cards[index].classList.add('active');
+        }
+
+        setInterval(() => {
+            index = (index + 1) % cards.length;
+            update();
+        }, 3000);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All View - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="asset/remove logo marhas.png">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #ebf0f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .filter-section {
+            padding: 40px 0 30px;
+        }
+        .btn-filter-active {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            font-weight: 500;
+        }
+        .btn-filter-inactive {
+            background-color: white;
+            color: #adb5bd;
+            border: 1px solid white;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            font-weight: 500;
+        }
+        .card-produk {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            padding: 12px;
+            background-color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .img-container {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            height: 160px;
+            background-color: #f8f9fa;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .judul-produk {
+            font-weight: 700;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #212529;
+            margin-bottom: 8px;
+            min-height: 40px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .badge-gratis {
+            background-color: #e6f0ff;
+            color: #0d6efd;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            padding: 3px 12px;
+            font-weight: 600;
+        }
+        .teks-pembuat {
+            color: #adb5bd;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        .bintang {
+            color: #ffc107;
+            font-size: 0.8rem;
+        }
+        .bintang-kosong {
+            color: #e9ecef;
+            font-size: 0.8rem;
+        }
+        .teks-sale {
+            color: #adb5bd;
+            font-size: 0.8rem;
+        }
+        .btn-preview {
+            background-color: #343a40;
+            color: white;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            padding: 6px 16px;
+            border: none;
+            text-decoration: none;
+        }
+        .btn-preview:hover {
+            background-color: #212529;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="asset/remove logo marhas.png" alt="logo" width="50" class="me-2">
+                <strong>SMK Marhas Margahayu</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="LandingPage.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="LandingPage.html#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="LandingPage.html#produk">Program</a></li>
+                    <li class="nav-item"><a class="nav-link" href="LandingPage.html#kontak">Kontak</a></li>
+                </ul>
+                <a href="form.html" class="btn btn-warning ms-lg-3 px-4 btn-hover">Daftar</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container pb-5">
+        <!-- Bagian Filter -->
+        <div class="filter-section d-flex justify-content-between align-items-center mb-2">
+            <h5 class="text-secondary mb-0" style="font-weight: normal; font-size: 1.1rem; color: #8e959c !important;">Filter</h5>
+            <div>
+                <a href="#" class="text-muted text-decoration-none me-3" style="font-size: 0.85rem;">All View</a>
+                <button class="btn-filter-active me-2" data-aos="zoom-in" data-aos-delay="100">New Item</button>
+                <button class="btn-filter-inactive" data-aos="zoom-in" data-aos-delay="200">Best Rated</button>
+            </div>
+        </div>
+
+        <!-- Bagian Grid -->
+        <div class="row g-4">
+            <!-- Karya 1 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
+                    <div class="img-container">
+                        <img src="asset/maukemana 1.png" alt="Mau Kemana Nih?">
+                    </div>
+                    <div class="judul-produk">Mau Kemana Nih?Temukan Destinasi Favorit dengan Harga Terbaik</div>
+                    <div class="d-flex justify-content-end mb-2">
+                        <span class="badge-gratis">Gratis</span>
+                    </div>
+                    <div class="teks-pembuat">By Alipp</div>
+                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                        <div>
+                            <div class="mb-1">
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang-kosong"></i>
+                            </div>
+                            <div class="teks-sale">108 Sale</div>
+                        </div>
+                        <a href="karya1.html" class="btn-preview">Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karya 2 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
+                    <div class="img-container">
+                        <img src="asset/bukukita.png" alt="Buku Kita">
+                    </div>
+                    <div class="judul-produk">Buku Kita:Lebih dari Sekadar Membaca, Kita Menghargai Setiap Karya</div>
+                    <div class="d-flex justify-content-end mb-2">
+                        <span class="badge-gratis">Gratis</span>
+                    </div>
+                    <div class="teks-pembuat">By Alipp</div>
+                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                        <div>
+                            <div class="mb-1">
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang-kosong"></i>
+                            </div>
+                            <div class="teks-sale">121 Sale</div>
+                        </div>
+                        <a href="karya2.html" class="btn-preview">Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karya 3 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
+                    <div class="img-container">
+                        <img src="asset/seragam.png" alt="Seragam">
+                    </div>
+                    <div class="judul-produk">Mulai Hari Seninmu dengan Rapi, Sambut Prestasi dengan Atribut Komplet!</div>
+                    <div class="d-flex justify-content-end mb-2">
+                        <span class="badge-gratis">Gratis</span>
+                    </div>
+                    <div class="teks-pembuat">By Alipp</div>
+                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                        <div>
+                            <div class="mb-1">
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang-kosong"></i>
+                            </div>
+                            <div class="teks-sale">17 Sale</div>
+                        </div>
+                        <a href="karya3.html" class="btn-preview">Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karya 4 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
+                    <div class="img-container" >
+                        <img src="asset/warbas.png" alt="Alifppy">
+                    </div>
+                    <div class="judul-produk">Alifppy: Jagoan Kelola Warung, Bikin Bisnis Seblak & Bakso Makin Untung!</div>
+                    <div class="d-flex justify-content-end mb-2">
+                        <span class="badge-gratis">Gratis</span>
+                    </div>
+                    <div class="teks-pembuat">By Alipp</div>
+                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                        <div>
+                            <div class="mb-1">
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                            </div>
+                            <div class="teks-sale">110 Sale</div>
+                        </div>
+                        <a href="karya4.html" class="btn-preview">Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karya 5 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
+                    <div class="img-container">
+                        <img src="asset/latihanlanding1 1.png" alt="Dashboard 1">
+                    </div>
+                    <div class="judul-produk">Langkah Awal Menjadi Developer dan Desainer Profesional di SMK Marhas</div>
+                    <div class="d-flex justify-content-end mb-2">
+                        <span class="badge-gratis">Gratis</span>
+                    </div>
+                    <div class="teks-pembuat">By Alipp</div>
+                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                        <div>
+                            <div class="mb-1">
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang-kosong"></i>
+                                <i class="fas fa-star bintang-kosong"></i>
+                            </div>
+                            <div class="teks-sale">11 Sale</div>
+                        </div>
+                        <a href="karya5.html" class="btn-preview">Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karya 6 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
+                    <div class="img-container">
+                        <img src="asset/aiCus.png" alt="Dashboard 2">
+                    </div>
+                    <div class="judul-produk">Instant Resolutions, Happier Customers: The Only AI Support System You Will Ever Need</div>
+                    <div class="d-flex justify-content-end mb-2">
+                        <span class="badge-gratis">Gratis</span>
+                    </div>
+                    <div class="teks-pembuat">By Alipp</div>
+                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                        <div>
+                            <div class="mb-1">
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                            </div>
+                            <div class="teks-sale">48 Sale</div>
+                        </div>
+                        <a href="karya6.html" class="btn-preview">Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karya 7 -->
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
+                    <div class="img-container">
+                        <img src="asset/revenue.png" alt="Dashboard 3">
+                    </div>
+                    <div class="judul-produk">Driver Revenue Digital Marketing Agency That Defines The Future of Brand Growth</div>
+                    <div class="d-flex justify-content-end mb-2">
+                        <span class="badge-gratis">Gratis</span>
+                    </div>
+                    <div class="teks-pembuat">By Alipp</div>
+                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                        <div>
+                            <div class="mb-1">
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                                <i class="fas fa-star bintang"></i>
+                            </div>
+                            <div class="teks-sale">98 Sale</div>
+                        </div>
+                        <a href="karya7.html" class="btn-preview">Preview</a    >
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-5" id="kontak">
+        <div class="container">
+            <div class="row g-5 mb-4">
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3">SMK Marhas</h5>
+                    <p class="text-muted">Sekolah Menengah Kejuruan Berbasis Teknologi terbaik di Korea. <br> <strong>Ayo Gabung Sekarang!!</strong></p>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3">Menu</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#" class="text-muted text-decoration-none">Beranda</a></li>
+                        <li><a href="#tentang" class="text-muted text-decoration-none">Tentang</a></li>
+                        <li><a href="#produk" class="text-muted text-decoration-none">Program</a></li>
+                        <li><a href="#lokasi" class="text-muted text-decoration-none">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <h5 class="fw-bold mb-3">Program</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#" class="text-muted text-decoration-none">PPLG</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">TPM</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <h5 class="fw-bold mb-3">Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="http://shopee.co.id/marhasshop" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <img src="asset/shopee-removebg.png" alt="Shopee" style="width: 20px; height: 20px; object-fit: contain;">
+                        </a>
+                        <a href="https://www.tiktok.com/@marhasupdate" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.instagram.com/marhasupdate" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://m.youtube.com/watch?v=HXTucNSpY1Q&feature=youtu.be" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="bg-secondary">
+
+            <div class="text-center text-muted">
+                <p class="mb-0">&copy; 2026 SMK Marhas. All Rights Reserved. | Designed with <span class="text-danger">❤</span> by Alipyy</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-w76AqPfDzYUpka6s0PtGv1aIwXWMM7F3jVVN6EpMn6aKzDf1PnJx6cIGNLNx8VH" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

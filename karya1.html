@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mau Kemana Nih? - Destinasi Favorit dengan Harga Terbaik</title>
+    <link rel="icon" type="image/x-icon" href="asset/remove logo marhas.png">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        background-color: #f5f5f5;
+    }
+    .deskripsi-produk {
+        line-height: 1.8;
+        color: #555;
+        font-size: 0.95rem;
+    }
+    .deskripsi-produk strong {
+        color: #333;
+    }
+    .btn-lihat-demo {
+        background-color: #faa83c;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+    .btn-lihat-demo:hover {
+        background-color: #e7890d;
+        color: white;
+    }
+    .btn-unduh {
+        background-color: #0D5FFF;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+    .btn-unduh:hover {
+        background-color: #0A4FCC;
+        color: white;
+    }
+    .kartu-penulis {
+        padding: 25px;
+        border-radius: 18px;
+        background-color: white;
+    }
+    .foto-penulis {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .nama-penulis {
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+    .sekolah-penulis {
+        color: #777;
+        font-size: 0.85rem;
+        margin-bottom: 0;
+    }
+    .angkatan-penulis {
+        color: #777;
+        font-size: 0.85rem;
+    }
+    .btn-lihat-portofolio {
+        background-color: #0D5FFF;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 10px;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .btn-lihat-portofolio:hover {
+        background-color: #0A4FCC;
+        color: white;
+    }
+    .kartu-samping {
+        background-color: white;
+        padding: 20px;
+        border-radius: 18px;
+    }
+    .kartu-samping h5 {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .baris-info {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .baris-info:last-child {
+        border-bottom: none;
+    }
+    .label-info {
+        font-weight: 600;
+        color: #777;
+    }
+    .nilai-info {
+        color: #999;
+        padding-right: 92px;
+    }
+    .nul{
+        padding-right: 160px;
+    }
+    .tautan-info {
+        color: #0D5FFF;
+        text-decoration: none;
+    }
+    .tautan-info:hover {
+        text-decoration: underline;
+    }
+    .penilaian-bintang {
+        color: #FFD700;
+        font-size: 1.1rem;
+    }
+    /* Gaya Navigasi Tab */
+    .nav-tabs .nav-link {
+        color: #666;
+        border: none;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        padding-bottom: 10px;
+    }
+    .nav-tabs .nav-link:hover {
+        color: #0D5FFF;
+        border-bottom-color: #0D5FFF;
+    }
+    .nav-tabs .nav-link.active {
+        color: #0D5FFF;
+        border-bottom-color: #0D5FFF;
+        background-color: transparent;
+    }
+    .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: 5px;
+        font-size: 0.85rem;
+    }
+    .breadcrumb-item a {
+        color: #999;
+        text-decoration: none;
+    }
+    .breadcrumb-item.active {
+        color: #999;
+    }
+    .wadah-gambar-utama {
+        border: 2px solid #0D5FFF;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+    .wadah-gambar-utama img {
+        width: 100%;
+        display: block;
+    }
+    .ikon-bagikan {
+        color: #0D5FFF;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    footer {
+        background-color: #0D5FFF;
+        color: white;
+        padding: 40px 0 20px;
+    }
+    footer h5 {
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    footer ul {
+        list-style: none;
+        padding: 0;
+    }
+    footer ul li {
+        margin-bottom: 8px;
+    }
+    footer ul li a {
+        color: white;
+        text-decoration: none;
+    }
+    footer ul li a:hover {
+        text-decoration: underline;
+    }
+</style>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="asset/remove logo marhas.png" alt="logo" width="50" class="me-2">
+                <strong>SMK Marhas Margahayu</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produk">Program</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                </ul>
+                <a href="form.html" class="btn btn-warning ms-lg-3 px-4 btn-hover">Daftar</a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <!-- Konten Utama -->
+    <div class="container my-4">
+        <!-- Navigasi Jejak -->
+        <nav aria-label="breadcrumb" data-aos="fade-right">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Karya siswa</a></li>
+                <li class="breadcrumb-item active">Mau Kemana Nih? Temukan Destinasi Favorit dengan Harga Terbaik</li>
+            </ol>
+        </nav>
+
+        <!-- Judul -->
+        <h4 class="fw-bold mb-3" data-aos="fade-right" data-aos-delay="100">Mau Kemana Nih? Temukan Destinasi Favorit dengan Harga Terbaik</h4>
+
+        <!-- Baris Tab + Bagikan/Penilaian -->
+        <div class="row align-items-center mb-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-8">
+                <ul class="nav nav-tabs border-bottom" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active text-decoration-none" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-decoration-none" id="preview-tab" data-bs-toggle="tab" data-bs-target="#preview" type="button" role="tab" aria-controls="preview" aria-selected="false">Preview</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-decoration-none" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" type="button" role="tab" aria-controls="comments" aria-selected="false">Comments</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-end">
+                <span class="ikon-bagikan me-2"><i class="fas fa-share-alt"></i></span>
+                <span class="penilaian-bintang">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Baris Konten: Kiri + Sidebar Kanan -->
+        <div class="row">
+            <!-- Kolom Kiri - Konten Utama -->
+            <div class="col-lg-8 col-md-12 mb-3" data-aos="fade-right" data-aos-delay="300">
+                <div class="tab-content" style="background-color: white; border-radius: 18px; padding: 20px;">
+                    <!-- Tab Deskripsi -->
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        <!-- Gambar -->
+                        <div class="wadah-gambar-utama mb-4">
+                            <img src="asset/maukemana 1.png" alt="Mau Kemana Nih?" class="img-fluid">
+                        </div>
+
+                        <!-- Teks Deskripsi -->
+                        <div class="deskripsi-produk">
+                            <p>
+                                Produk tersebut merupakan sebuah platform layanan pemesanan perjalanan atau agen wisata 
+                                daring bernama <strong>"Mau Kemana Nih?"</strong> yang mengusung konsep kemudahan akses bagi para 
+                                pelancong. Melalui antarmuka situs webnya yang estetik dengan latar pemandangan alam 
+                                pegunungan dan danau yang jernih, platform ini menawarkan solusi perjalanan ke berbagai 
+                                destinasi baik domestik di wilayah Indonesia maupun mancanegara secara internasional dengan 
+                                jaminan harga yang terjangkau serta keamanan transaksi yang terjamin. Fokus utama dari 
+                                layanan ini adalah fleksibilitas bagi pengguna, yang tercermin dalam semoboyannya yang 
+                                menyatakan bahwa perjalanan dapat dilakukan ke mana pun dan kapan pun dengan proses yang 
+                                pasti bisa dilakukan tanpa kendala berarti.
+                            </p>
+                            <p>
+                                Untuk mendukung fungsi tersebut, platform ini menyediakan fitur pencarian yang komprehensif 
+                                dan mudah digunakan pada bagian bawah halaman utama guna membantu pengguna 
+                                merencanakan perjalanan mereka secara mendetail. Pengguna dapat langsung menentukan kota 
+                                asal keberangkatan, memilih kota tujuan yang diinginkan, serta mengatur tanggal 
+                                keberangkatan dan kepulangan melalui kolom penanggalan yang tersedia. Selain itu, terdapat 
+                                pula pengaturan jumlah penumpang untuk memastikan kapasitas akomodasi atau transportasi 
+                                sesuai dengan kebutuhan pengguna sebelum mereka menekan tombol pencarian untuk 
+                                mendapatkan penawaran terbaik. Secara keseluruhan, produk ini diposisikan sebagai asisten 
+                                perjalanan digital yang modern, praktis, dan dapat diandalkan bagi siapa saja yang ingin 
+                                mengeksplorasi dunia dengan lebih efisien.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tab Pratinjau -->
+                    <div class="tab-pane fade" id="preview" role="tabpanel" aria-labelledby="preview-tab">
+                        <div class="my-4">
+                            <h3 class="mb-4">Preview</h3>
+                            <img src="asset/maukemana 1.png" alt="Preview" class="img-fluid rounded" style="width: 100%;">
+                            <p class="deskripsi-produk mt-4">
+                                Berikut adalah preview dari tampilan platform Mau Kemana Nih? yang menampilkan destinasi wisata populer dengan fitur pencarian yang mudah digunakan dan tata letak yang responsif.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tab Komentar -->
+                    <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                        <div class="my-4">
+                            <h3 class="mb-4">Comments</h3>
+                            <p class="text-muted">Tidak ada komentar untuk saat ini. Jadilah yang pertama memberikan komentar tentang produk ini.</p>
+                            
+                            <div class="mt-4">
+                                <h5>Tambah Komentar</h5>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="commentName" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="commentName" placeholder="Masukkan nama Anda">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="commentEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="commentEmail" placeholder="Masukkan email Anda">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="commentText" class="form-label">Komentar</label>
+                                        <textarea class="form-control" id="commentText" rows="4" placeholder="Tulis komentar Anda di sini..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-unduh">Kirim Komentar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan - Sidebar -->
+            <div class="col-lg-4 col-md-12" data-aos="fade-left" data-aos-delay="400">
+                <!-- Kartu Produk -->
+                <div class="kartu-samping mb-3">
+                    <h5>Product</h5>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">
+                        Mau Kemana Nih? adalah platform layanan perjalanan daring yang menyediakan pemesanan tiket dan paket wisata untuk destinasi domestik maupun internasional dengan harga terjangkau.
+                    </p>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <a href="PSAS1smt1/PSAS1.html" class="btn btn-lihat-demo">Lihat Demo</a>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-unduh w-100">Unduh</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu Penulis -->
+                <div class="kartu-penulis mb-3">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="asset/alif 1.JPG" alt="Foto Profil" class="foto-penulis me-3">
+                        <div class="text-start">
+                            <div class="nama-penulis">M ALLIF</div>
+                            <div class="sekolah-penulis">Siswa SMK Marhas</div>
+                            <div class="angkatan-penulis">Angkatan 27</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-lihat-portofolio mt-2">View Portfolio</button>
+                </div>
+
+                <!-- Informasi Produk -->
+                <div class="kartu-samping mb-3">
+                    <h5>Product Information</h5>
+                    <div class="baris-info">
+                        <span class="label-info">Last Update</span>
+                        <span class="nul">-</span>
+                    </div>
+                    <div class="baris-info">
+                        <span class="label-info">Published</span>
+                        <span class="nilai-info">08 Jul 2025</span>
+                    </div>
+                    <div class="baris-info">
+                        <span class="label-info">Tag</span>
+                        <span class="info-tag"><a href="#" class="tautan-info">Laravel</a>, <a href="#" class="tautan-info">Sistem Informasi</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-5" id="kontak">
+        <div class="container">
+            <div class="row g-5 mb-4">
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="fw-bold mb-3">SMK Marhas</h5>
+                    <p class="text-muted">Sekolah Menengah Kejuruan Berbasis Teknologi terbaik di Korea. <br> <strong>Ayo Gabung Sekarang!!</strong></p>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <h5 class="fw-bold mb-3">Menu</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#" class="text-muted text-decoration-none">Beranda</a></li>
+                        <li><a href="#tentang" class="text-muted text-decoration-none">Tentang</a></li>
+                        <li><a href="#produk" class="text-muted text-decoration-none">Program</a></li>
+                        <li><a href="#lokasi" class="text-muted text-decoration-none">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <h5 class="fw-bold mb-3">Program</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#" class="text-muted text-decoration-none">PPLG</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">TPM</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <h5 class="fw-bold mb-3">Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="http://shopee.co.id/marhasshop" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <img src="asset/shopee-removebg.png" alt="Shopee" style="width: 20px; height: 20px; object-fit: contain;">
+                        </a>
+                        <a href="https://www.tiktok.com/@marhasupdate" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.instagram.com/marhasupdate" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://m.youtube.com/watch?v=HXTucNSpY1Q&feature=youtu.be" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="bg-secondary">
+
+            <div class="text-center text-muted">
+                <p class="mb-0">&copy; 2026 SMK Marhas. All Rights Reserved. | Designed with <span class="text-danger">❤</span> by Alipyy</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-w76AqPfDzYUpka6s0PtGv1aIwXWMM7F3jVVN6EpMn6aKzDf1PnJx6cIGNLNx8VH" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
