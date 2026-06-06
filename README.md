@@ -87,8 +87,6 @@ Atau gunakan extension **Live Server** pada Visual Studio Code.
 
 ![Jurusan](asset/reviewjurusan.png)
 
-> Ganti gambar di atas dengan screenshot asli website yang sudah kamu buat.
-
 ## 🎯 Tujuan Project
 
 - Mempermudah proses pendaftaran peserta didik baru.
