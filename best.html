@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All View - Portfolio</title>
+    <title>Best Rated - Portfolio</title>
     <link rel="icon" type="image/x-icon" href="asset/remove logo marhas.png">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         html {
@@ -17,8 +16,77 @@
             background-color: #ebf0f4;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        /* Liquid Glass Navbar Styling */
+        #navbar {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .navbar-brand {
+            color: #212529 !important;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin-bottom: 0;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #495057;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0d6efd;
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #212529;
+            position: absolute;
+            transition: 0.3s ease;
+        }
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { top: 18px; }
+        
         .filter-section {
-            padding: 40px 0 30px;
+            padding: 100px 0 30px;
         }
         .btn-filter-active {
             background-color: #0d6efd;
@@ -29,10 +97,6 @@
             padding: 6px 16px;
             font-weight: 500;
         }
-        .btn-filter-active:hover {
-            background-color: #0b5ed7;
-            color: white;
-        }
         .btn-filter-inactive {
             background-color: white;
             color: #adb5bd;
@@ -41,11 +105,6 @@
             font-size: 0.85rem;
             padding: 6px 16px;
             font-weight: 500;
-        }
-        .btn-filter-inactive:hover {
-            background-color: #f8f9fa;
-            color: #adb5bd;
-            border: 1px solid #f8f9fa;
         }
         .card-produk {
             border-radius: 12px;
@@ -56,10 +115,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            opacity: 1 !important;
-            visibility: visible !important;
         }
-        
         .img-container {
             border-radius: 8px;
             overflow: hidden;
@@ -123,189 +179,49 @@
             background-color: #212529;
             color: white;
         }
+        @media (max-width: 768px) {
+            #navbar {
+                width: 95%;
+                padding: 0.5rem 1.25rem;
+                top: 10px;
+                border-radius: 30px;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s ease;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links a { font-size: 1.25rem; }
+            .hamburger { display: block; }
+        }
     </style>
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="asset/remove logo marhas.png" alt="logo" width="50" class="me-2">
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="asset/remove logo marhas.png" alt="logo" width="40" class="me-2">
                 <strong>SMK Marhas Margahayu</strong>
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
-                <span class="navbar-toggler-icon"></span>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Beranda</a></li>
+                <li><a href="index.html#tentang" class="nav-link">Tentang</a></li>
+                <li><a href="index.html#produk" class="nav-link">Program</a></li>
+                <li><a href="#kontak" class="nav-link">Kontak</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarMenu">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#tentang">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#produk">Program</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#kontak">Kontak</a></li>
-                </ul>
-                <a href="form.html" class="btn btn-warning ms-lg-3 px-4 btn-hover">Daftar</a>
-            </div>
         </div>
     </nav>
-
-    <div class="container pb-5">
-        <!-- Bagian Filter -->
-        <div class="filter-section d-flex justify-content-between align-items-center mb-2">
-            <h5 class="text-secondary mb-0" style="font-weight: normal; font-size: 1.1rem; color: #8e959c !important;">Filter</h5>
-            <div>
-                <a href="allview.html" class="btn-filter-active text-muted text-decoration-none me-3" style="font-size: 0.85rem;">New Item</a>
-                <a href="best.html" class="btn-filter-inactive text-muted text-decoration-none" style="font-size: 0.85rem;">Best Rated</a>
-            </div>
-        </div>
-
-        <!-- Bagian Grid -->
-        <div class="row g-4">
-            <!-- Karya 1 -->
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
-                    <div class="img-container">
-                        <img src="asset/bukukita.png" alt="Buku Kita">
-                    </div>
-                    <div class="judul-produk">Buku Kita:Lebih dari Sekadar Membaca, Kita Menghargai Setiap Karya</div>
-                    <div class="d-flex justify-content-end mb-2">
-                        <span class="badge-gratis">Gratis</span>
-                    </div>
-                    <div class="teks-pembuat">By Alipp</div>
-                    <div class="d-flex justify-content-between align-items-end mt-auto">
-                        <div>
-                            <div class="mb-1">
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                            </div>
-                            <div class="teks-sale">121 Sale</div>
-                        </div>
-                        <a href="karya2.html" class="btn-preview">Preview</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Karya 2 -->
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
-                    <div class="img-container">
-                        <img src="asset/warbas.png" alt="Warbas">
-                    </div>
-                    <div class="judul-produk">Alifppy: Jagoan Kelola Warung, Bikin Bisnis Seblak & Bakso Makin Untung!</div>
-                    <div class="d-flex justify-content-end mb-2">
-                        <span class="badge-gratis">Gratis</span>
-                    </div>
-                    <div class="teks-pembuat">By Alipp</div>
-                    <div class="d-flex justify-content-between align-items-end mt-auto">
-                        <div>
-                            <div class="mb-1">
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                            </div>
-                            <div class="teks-sale">110 Sale</div>
-                        </div>
-                        <a href="karya4.html" class="btn-preview">Preview</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Karya 3 -->
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="card-produk" data-aos="zoom-in-up" data-aos-delay="70">
-                    <div class="img-container">
-                        <img src="asset/agen.png" alt="Seragam">
-                    </div>
-                    <div class="judul-produk">Driver Revenue Digital Marketing Agency That Defines The Future of Brand Growth</div>
-                    <div class="d-flex justify-content-end mb-2">
-                        <span class="badge-gratis">Gratis</span>
-                    </div>
-                    <div class="teks-pembuat">By Alipp</div>
-                    <div class="d-flex justify-content-between align-items-end mt-auto">
-                        <div>
-                            <div class="mb-1">
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                                <i class="fas fa-star bintang"></i>
-                            </div>
-                            <div class="teks-sale">98 Sale</div>
-                        </div>
-                        <a href="karya7.html" class="btn-preview">Preview</a>
-                    </div>
-                </div>
-            </div> 
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-primary text-white py-5" id="kontak">
-        <div class="container">
-            <div class="row g-5 mb-4">
-                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <h5 class="fw-bold mb-3">SMK Marhas</h5>
-                    <p class="text-muted">Sekolah Menengah Kejuruan Berbasis Teknologi terbaik di Korea. <br> <strong>Ayo Gabung Sekarang!!</strong></p>
-                </div>
-
-                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <h5 class="fw-bold mb-3">Menu</h5>
-                    <ul class="list-unstyled text-muted">
-                        <li><a href="#" class="text-muted text-decoration-none">Beranda</a></li>
-                        <li><a href="#tentang" class="text-muted text-decoration-none">Tentang</a></li>
-                        <li><a href="#produk" class="text-muted text-decoration-none">Program</a></li>
-                        <li><a href="#lokasi" class="text-muted text-decoration-none">Kontak</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                    <h5 class="fw-bold mb-3">Program</h5>
-                    <ul class="list-unstyled text-muted">
-                        <li><a href="#" class="text-muted text-decoration-none">PPLG</a></li>
-                        <li><a href="#" class="text-muted text-decoration-none">TPM</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                    <h5 class="fw-bold mb-3">Follow Us</h5>
-                    <div class="d-flex gap-3">
-                        <a href="http://shopee.co.id/marhasshop" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
-                            <img src="asset/shopee-removebg.png" alt="Shopee" style="width: 20px; height: 20px; object-fit: contain;">
-                        </a>
-                        <a href="https://www.tiktok.com/@marhasupdate" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                        <a href="https://www.instagram.com/marhasupdate" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="https://m.youtube.com/watch?v=HXTucNSpY1Q&feature=youtu.be" class="btn btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; padding: 0;">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="bg-secondary">
-
-            <div class="text-center text-muted">
-                <p class="mb-0">&copy; 2026 SMK Marhas. All Rights Reserved. | Designed with <span class="text-danger">❤</span> by Alipyy</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-w76AqPfDzYUpka6s0PtGv1aIwXWMM7F3jVVN6EpMn6aKzDf1PnJx6cIGNLNx8VH" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-        AOS.init();
-    </script>
 </body>
 </html>
